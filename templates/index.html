@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JARVIS Personal AI Assistant</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="top">
+  <h1>JARVIS</h1>
+  <span id="mode" class="badge" role="status">Checking mode…</span>
+</header>
+<main class="grid">
+  <section class="panel chat" aria-label="Chat">
+    <div class="core-wrap">
+      <div id="core" class="core" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+      <p id="status" class="status" role="status" aria-live="polite">Standing by</p>
+    </div>
+    <div id="log" class="log" aria-live="polite"></div>
+    <div class="composer">
+      <button id="mic" class="icon" aria-label="Start voice input" title="Voice input">🎤</button>
+      <input id="msg" type="text" maxlength="1000" placeholder="Ask JARVIS or type 'help'" aria-label="Message">
+      <button id="send" class="primary">Send</button>
+    </div>
+    <div class="tools">
+      <label class="switch"><input id="speak" type="checkbox"> Spoken replies</label>
+      <button id="clear" class="ghost">Clear chat</button>
+    </div>
+  </section>
+  <aside class="side">
+    <section class="panel" aria-label="Tasks"><h2>Tasks</h2><form data-kind="tasks"><input aria-label="New task" placeholder="Add a task"><button>Add</button></form><ul id="tasks"></ul></section>
+    <section class="panel" aria-label="Reminders"><h2>Reminders</h2><form data-kind="reminders"><input aria-label="New reminder" placeholder="Stretch in 10 minutes"><button>Add</button></form><ul id="reminders"></ul></section>
+    <section class="panel" aria-label="Notes"><h2>Notes</h2><form data-kind="notes"><input aria-label="New note" placeholder="Add a note"><button>Add</button></form><ul id="notes"></ul></section>
+    <section class="panel" aria-label="Recent activity"><h2>Recent activity</h2><ul id="activity" class="plain"></ul></section>
+  </aside>
+</main>
+<div id="toast" class="toast" role="alert" hidden></div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+:root{--bg:#050b17;--navy:#0a1630;--line:#173a5e;--cyan:#22e4ff;--blue:#2f7bff;--text:#e6f4ff;--muted:#93b4cc;--bad:#ff8a8a}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 50% -10%,#0d2447,var(--bg) 60%);color:var(--text);font:16px/1.5 system-ui,"Segoe UI",sans-serif;min-height:100vh}
+.top{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+h1{margin:0;font-size:1.6rem;letter-spacing:.35em;color:var(--cyan);text-shadow:0 0 14px var(--cyan)}
+h2{margin:0 0 8px;font-size:1rem;color:var(--cyan)}
+.badge{font-size:.85rem;padding:4px 12px;border:1px solid var(--line);border-radius:99px;color:var(--muted)}
+.badge.ai{color:#7dffb0;border-color:#2a7a52}
+.grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:16px;padding:0 20px 20px;max-width:1200px;margin:auto}
+.panel{background:rgba(10,22,48,.85);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 0 24px rgba(34,228,255,.06)}
+.side{display:flex;flex-direction:column;gap:12px}
+.chat{display:flex;flex-direction:column;min-height:78vh}
+.core-wrap{display:grid;place-items:center;padding:6px 0 10px}
+.core{position:relative;width:120px;height:120px}
+.core i,.core b{position:absolute;border-radius:50%;inset:0}
+.core i{border:2px solid var(--cyan);border-top-color:transparent;border-bottom-color:transparent;box-shadow:0 0 16px rgba(34,228,255,.5);animation:spin 8s linear infinite}
+.core i:nth-child(2){inset:14px;border-color:var(--blue) transparent;animation-duration:5s;animation-direction:reverse}
+.core i:nth-child(3){inset:28px;animation-duration:3s}
+.core b{inset:44px;background:radial-gradient(var(--cyan),var(--blue) 70%);box-shadow:0 0 28px var(--cyan);animation:pulse 3s ease-in-out infinite}
+.core.listening i{animation-duration:1.4s}.core.listening b{animation-duration:.7s;background:radial-gradient(#fff,var(--cyan))}
+.core.thinking i{animation-duration:1s}.core.speaking b{animation-duration:.5s}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{transform:scale(1.25);opacity:.8}}
+.status{margin:6px 0 0;color:var(--muted);font-size:.9rem}
+.log{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:8px 2px;max-height:48vh}
+.m{max-width:85%;padding:8px 12px;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere}
+.m.user{align-self:flex-end;background:#12408a;border:1px solid var(--blue)}
+.m.assistant{align-self:flex-start;background:#0b2a3d;border:1px solid #1b6f86}
+.m small{display:block;color:var(--muted);font-size:.75rem;margin-top:2px}
+.m.err{border-color:var(--bad);color:var(--bad)}
+.composer{display:flex;gap:8px;margin-top:8px}
+input[type=text],form input{flex:1;min-width:0;background:#06101f;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit}
+button{font:inherit;cursor:pointer;border-radius:10px;border:1px solid var(--line);background:#0d2447;color:var(--text);padding:8px 14px}
+button.primary{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#021019;border:0;font-weight:600}
+button.icon.on{background:#7a1f3d;box-shadow:0 0 14px #ff5c8a}
+button.ghost{background:none;color:var(--muted)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+button:disabled{opacity:.5;cursor:not-allowed}
+.tools{display:flex;justify-content:space-between;align-items:center;margin-top:8px;color:var(--muted);font-size:.9rem}
+form{display:flex;gap:6px;margin-bottom:8px}
+ul{list-style:none;margin:0;padding:0;max-height:160px;overflow-y:auto}
+li{display:flex;gap:8px;align-items:center;padding:4px 0;border-bottom:1px solid #112a47;font-size:.92rem}
+li span{flex:1;overflow-wrap:anywhere}li.done span{text-decoration:line-through;color:var(--muted)}
+li small{color:var(--muted)}li button{padding:2px 8px}
+ul.plain li{display:block;color:var(--muted)}
+.empty{color:var(--muted);font-size:.9rem}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#0b2a3d;border:1px solid var(--cyan);padding:10px 16px;border-radius:10px;max-width:90vw;z-index:9}
+.toast.bad{border-color:var(--bad);color:var(--bad)}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.chat{min-height:70vh}}
+@media(prefers-reduced-motion:reduce){.core i,.core b{animation:none}}
